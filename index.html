@@ -5,47 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Indice grasa corporal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <script src="https://kit.fontawesome.com/252cfd9c90.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>CALCULADORA INDICE GRASA CORPORAL</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident facere, aut animi et exercitationem, laborum saepe dicta labore, in similique voluptate voluptas voluptatibus nisi deserunt. Quam aspernatur recusandae at doloribus?</p>
-        <form action="">
-            <div>
-                <input type="number">
+        <p>Esta calculadora te permitirá medir el porcentaje de grasa corporal que posees a traves de tu estaura, peso y medidas de cuello, cintura y caderas en mujeres</p>
+        <form action="" class="formulario">
+            <div class="input-box w-50">
+                <input type="number"  >
                 <span>Estatura cms</span>
             </div>
-            <div>
-                <input type="number">
+            <div class="input-box w-50">
+                <input type="number" >
                 <span>Peso kgs</span>
             </div>
-            <div>
-                <input type="number">
+            <div class="input-box w-33">
+                <input type="number" >
                 <span>Cintura cms</span>
             </div>
-            <div>
-                <input type="number">
+            <div class="input-box w-33">
+                <input type="number" >
                 <span>Cuello cms</span>
             </div>
-            <div>
-                <input type="number">
+            <div class="input-box w-33">
+                <input type="number" >
                 <span>Cadera cms (mujeres)</span>
             </div>
-            <a href="">Como medir</a>
-            <div>
-                <input type="radio">
-                <span>Hombre</span>
-                <input type="radio">
-                <span>Mujer</span>
+            <a href="#modal" class="medir">Como medir</a>
+            <h3 class="titulo genero">GENERO</h3>
+            <div class="genero">
+                
+                <input type="radio" id="men" name="genero">
+                <label for="men" class="img-men"><i class="fa-sharp fa-solid fa-person"></i> <p>H</p>  </label>
+                <input type="radio" id="women" name="genero">
+                <label for="women" class="img-women"><i class="fa-sharp fa-solid fa-person-dress"></i><p>M</p></label>
+                
             </div>
-            <div>
-               <button type="submit">CALCULAR</button>
+            <div class="calcular">
+               <button type="submit" class="boton">CALCULAR</button>
                 
             </div>
 
         </form>
     </div>
+    
+    <div class="container modal" id="modal"> 
+        <i class="fa-sharp fa-solid fa-rectangle-xmark"></i>
+        <h2>CÓMO MEDIR</h2>
+        <div class="medidas">
+                <div class="w-33 card-medidas" >
+                    <h3>Cintura</h3>
+                    <img class="card-medidas-img"  src="/img/cintura.jpg" alt="">
+                    <p> Asegúrate de que la cinta rodea justo la espalda y mídelo en la parte delantera del cuerpo a la altura del ombligo.</p>
+                </div>
+            <div class="w-33 card-medidas">
+                <h3>Cuello</h3>
+                <img class="card-medidas-img" src="/img/cuello.jpg" alt="">
+                <p> Utiliza la cinta en la parte más prominente del cuello, de pie, con los brazos caídos a los lados y la cabeza recta .</p>
+            </div>
+            <div class="w-33 card-medidas">
+                <h3>Cadera</h3>
+                <img class="card-medidas-img" src="/img/medir-caderas-.jpg" alt="">
+                <p> Asegurarte de poner los pies juntos. Seguidamente colocar la cinta métrica en la parte ancha de las caderas.</p>
+            </div>
+        </div>
+    </div>
+    
     
 </body>
 </html>

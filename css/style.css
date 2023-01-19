@@ -1,0 +1,357 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,regular,500,600,700);
+
+/*Generales*/
+:root{
+    --fuente-titulo: 'Raleway';
+    --fuente-texto: 'Quicksand';
+    --green-50 : #f0fdf4;
+    --green-100 : #DCFCE7;
+    --green-200 : #bbf7d0;
+    --green-300 : #86efac;
+    --green-400 : #4ade80;
+    --green-500 : #22c55e;
+    --green-600 : #16a34a;
+    --green-700 : #15803d;
+    --green-800 : #166534;
+    --green-900 : #14532d;
+    --gray-50: #f9fafb;
+    --gray-100:  rgb(243 244 246);
+    --gray-300:  rgb(209 213 219);
+    --gray-900: #111827;
+
+    --distancia-icons: 120px;
+    
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: var(--fuente-titulo);
+    color: var(--green-900);
+}
+p,span,a{
+    font-family: var(--fuente-texto);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--green-700);
+    
+}
+.w-50{
+    width: 50%;
+}
+.w-33{
+    width: 33%;
+}
+/*Index*/
+.container{
+    background: var(--gray-50);
+    width: 70vw;
+    height: 90vh;
+    margin-top: 50px;
+    padding: 50px;
+    padding-bottom: 0px;
+    border-radius: 20px;
+    box-shadow: 10px 5px 30px rgba(20, 83, 45, 0.5);
+    
+
+}
+
+
+p{
+    color:#202020;
+    font-size: 20px;
+}
+.formulario{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;   
+}
+.input-box{
+    position: relative;
+    margin-top: 25px;
+    
+}
+.input-box input{
+    background: var(--gray-50);
+    border-style: none;
+    border-bottom: 1px solid var(--gray-900);  
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+}
+.input-box span{
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    pointer-events: none;
+    transition: all .5s;
+}
+
+.input-box input:valid ~ span{
+    transform: translateY(-20px);
+    color: var(--gray-900);
+    font-weight: 600;
+}
+.medir{
+    margin-top: 20px;
+    color: var(--green-800);
+    font-weight: 600;
+    font-size: 16px;
+}
+.titulo-genero{
+    text-align: center;
+}
+.genero{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.genero input {
+    position: absolute;
+    left: -9999px;
+   
+  }
+  .genero img{
+    width: 50px;
+    
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  .genero p{
+    
+    font-weight: 700;
+    opacity: 0.5;
+    text-align: center;
+  }
+  .fa-person{
+    font-size: 80px;
+    color:blue;
+  }
+  .fa-person-dress{
+    font-size: 80px;
+    color: #A95183;
+
+  }
+ 
+input[type=radio]:checked + label>img  {
+    border: 1px solid #fff;
+    
+    opacity: 1;
+  }
+  input[type=radio]:checked + label>p  {
+    opacity: 1;
+    font-size: 24px;
+  } 
+
+
+.calcular{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+
+.boton{
+    background: var(--green-500);
+    color: white;
+    font-weight: 600;
+    font-family: var(--fuente-titulo);
+    padding: 15px;
+    border-radius: 10px;
+    border-style: none;
+    transition: all .5s;
+    margin-top: 5px;
+    width: auto;
+}
+.boton:hover{
+    background: var(--green-800);
+}
+
+/*MODAL*/
+#modal{
+    width: 750px;
+    height: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    transition: all .5s;
+    opacity: 0; 
+    display:none;
+}
+#modal:target{
+    opacity: 1;
+}
+.medir.modal{
+    display: block;
+}
+.fa-rectangle-xmark{
+    color: red;
+    font-size: 48px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+   cursor: pointer;
+}
+.medidas{
+    display: flex;
+    column-gap: 20px;
+    
+    
+}
+.medidas img{
+    width: 100%;
+    height: 138px;
+    object-fit: cover;
+    object-position: center;
+    
+}
+.card-medidas{
+    position: relative;
+    height: auto ;
+    padding: 10px;
+}
+.card-medidas h3{
+    margin-bottom: 50px;
+}
+
+.card-medidas:hover:before{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 99%;
+    background: rgba(0, 0, 0, 0.7) ;
+    border-radius: 16px;
+    transition: all .3s;
+}
+.card-medidas:hover.card-medidas p{
+   display: block;
+}
+.card-medidas:hover.card-medidas h3{
+    visibility: hidden;
+ }
+.card-medidas p{
+  color: white;
+  position: absolute;
+  top:20px;
+  padding: 10px;
+  display: none;
+}
+
+/*RESULTADO*/
+.tabla{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    place-items: center; 
+    margin-bottom: 50px;
+}
+.tabla-hombres{
+    display: none;
+}
+.titulo-tabla{
+    text-align: center;
+    margin-top: 50px;
+}
+.tabla img{
+    width: 50px;
+    height: 110px;
+    margin-right: 10px;
+    opacity: 0.3;
+    object-fit: cover;
+    object-position: center;
+}
+.col{
+    padding: 10px;
+}
+.impar{
+    background: var(--gray-100);
+}
+.col-superior{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   
+} 
+.col-superior h3{
+    color: #000;
+}
+.col p{
+    text-align: center;
+}
+.img-center{
+    text-align: center;
+}
+.active img{
+    opacity: 1;
+}
+.active h3{
+    color: var(--green-900);
+}
+.active p{
+   
+    font-weight: 600;
+} 
+.active p{
+    background: var(--green-500);
+    padding: 0px;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 640px) {
+    body{
+        background: white;
+    }
+    .container{
+        width: 100%;
+        padding: 30px;
+        height: auto;
+        margin-top: 500px;  
+    }
+    h1{
+        text-align: center;
+       
+    }
+    .input-box{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        
+    }
+    .img-men{
+        margin-right:60px;
+      }
+      .img-women{
+        margin-left: 60px;
+      }
+
+    .medidas{
+       flex-direction: column;
+       
+    }  
+    .card-medidas{
+        width: 100%;
+    }
+    .resultado{
+        padding: 0 10px;
+    }
+    .resultado p{
+        text-align: center;
+        padding: 0 20px;
+    }
+    .tabla{
+        grid-template-columns: 1fr;
+    }
+    .tabla .col{
+        margin-bottom: 50px;
+    }
+   
+ }
