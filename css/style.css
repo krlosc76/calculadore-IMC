@@ -20,7 +20,7 @@
     --gray-300:  rgb(209 213 219);
     --gray-900: #111827;
 
-    --distancia-icons: 120px;
+    --distancia-icons: 200px;
     
 }
 h1,h2,h3,h4,h5,h6{
@@ -45,11 +45,17 @@ body{
 .w-33{
     width: 33%;
 }
+.mostrar{
+   visibility: visible;
+}
+.ocultar{
+    visibility: hidden;
+}
 /*Index*/
 .container{
     background: var(--gray-50);
     width: 70vw;
-    height: 90vh;
+    height: 85vh;
     margin-top: 50px;
     padding: 50px;
     padding-bottom: 0px;
@@ -58,6 +64,10 @@ body{
     
 
 }
+.principal{
+    transition: all .5s;
+}
+
 
 
 p{
@@ -131,10 +141,12 @@ p{
   .fa-person{
     font-size: 80px;
     color:blue;
+    margin-right: 50px;
   }
   .fa-person-dress{
     font-size: 80px;
     color: #A95183;
+    margin-left: 50px;
 
   }
  
@@ -182,9 +194,10 @@ input[type=radio]:checked + label>img  {
     left: 50%;
     transform: translate(-50%, -50%); 
     transition: all .5s;
-    opacity: 0; 
-    display:none;
+    visibility: hidden;   
 }
+
+
 #modal:target{
     opacity: 1;
 }
@@ -247,15 +260,18 @@ input[type=radio]:checked + label>img  {
 }
 
 /*RESULTADO*/
+.resultado{
+    position: fixed;
+    transition: all .5s;
+    display: none;
+}
 .tabla{
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     place-items: center; 
     margin-bottom: 50px;
 }
-.tabla-hombres{
-    display: none;
-}
+
 .titulo-tabla{
     text-align: center;
     margin-top: 50px;
@@ -289,6 +305,7 @@ input[type=radio]:checked + label>img  {
 .img-center{
     text-align: center;
 }
+
 .active img{
     opacity: 1;
 }
