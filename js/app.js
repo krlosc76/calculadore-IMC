@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){ 
     // Variables
 const principal = document.querySelector('.principal');
-const modal = document.querySelector('.modal');
+const modal = document.querySelector('#modal');
 const openModal = document.querySelector('#open-modal');
 const closeModal = document.querySelector('#close');
 const resultado = document.querySelector('.resultado');
@@ -31,11 +31,8 @@ let tuEstado = document.createElement('P');
 //abrir ventanas modales
 openModal.addEventListener('click', abrirModal);
 closeModal.addEventListener('click', cerrarModal);
-//peso.addEventListener('input', validar);
-//calcular.addEventListener('click', abrirResultado);
 formulario.addEventListener('submit', calcular);
 regresar.addEventListener('click', cerrarResultado);
-//validar formulario
 
 
 function abrirModal(e){
