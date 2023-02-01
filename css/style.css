@@ -55,7 +55,7 @@ body{
 .container{
     background: var(--gray-50);
     width: 70vw;
-    height: 85vh;
+    height: auto;
     margin-top: 50px;
     padding: 50px;
     padding-bottom: 0px;
@@ -183,6 +183,18 @@ input[type=radio]:checked + label>img  {
 }
 .boton:hover{
     background: var(--green-800);
+}
+.alerta{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.alerta p{
+    text-align: center;
+    background: red;
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
 }
 
 /*MODAL*/

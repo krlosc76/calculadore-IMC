@@ -5,7 +5,7 @@ const modal = document.querySelector('.modal');
 const openModal = document.querySelector('#open-modal');
 const closeModal = document.querySelector('#close');
 const resultado = document.querySelector('.resultado');
-const calcular = document.querySelector('#calcular');
+//const calcular = document.querySelector('#calcular');
 const regresar = document.querySelector('#regresar');
 const parrafo1 = document.querySelector('.parrafo1');
 const parrafo2 = document.querySelector('.parrafo2');
@@ -15,7 +15,6 @@ const women = document.querySelector('#women');
 const tablaMujeres = document.querySelector('.tabla-mujeres');
 const tablaHombres = document.querySelector('.tabla-hombres');
 const formulario = document.querySelector('#formulario');
-let peso = document.querySelector('#peso');
 let atleta = document.querySelector('#atleta');
 let normal = document.querySelector('#normal');
 let corpulento = document.querySelector('#corpulento');
@@ -33,7 +32,8 @@ let tuEstado = document.createElement('P');
 openModal.addEventListener('click', abrirModal);
 closeModal.addEventListener('click', cerrarModal);
 //peso.addEventListener('input', validar);
-calcular.addEventListener('click', abrirResultado);
+//calcular.addEventListener('click', abrirResultado);
+formulario.addEventListener('submit', calcular);
 regresar.addEventListener('click', cerrarResultado);
 //validar formulario
 
@@ -52,8 +52,38 @@ function cerrarModal(e){
     
 }
 
-function abrirResultado(e){
-    e.preventDefault();
+function calcular(e){
+  e.preventDefault();
+  let estatura = document.querySelector('#estatura').value;
+  let peso = document.querySelector('#peso').value;
+  let cintura = document.querySelector('#cintura').value;
+  let cuello =  document.querySelector('#cuello').value;
+  let cadera = document.querySelector('#cadera').value;
+
+  //Validación
+  if(peso === '' || estatura === '' || cintura === ''  || cuello === ''  || (cadera === '' && women.checked)){
+    alerta('Todos los campos son obligatorios');
+    return
+  }else if(men.checked === false && women.checked === false){
+    alerta('Seleccione genero');
+    return
+  }
+ abrirResultado();
+}
+
+
+function alerta(error){
+  const mensajeAlerta = document.createElement('P');
+  mensajeAlerta.textContent = error;
+  const alerta = document.querySelector('.alerta');
+  alerta.appendChild(mensajeAlerta);
+  setTimeout (()=>{
+    mensajeAlerta.remove();
+}, 3000);
+}
+
+
+function abrirResultado(){
     resultado.style.display = 'block';
     principal.style.display = 'none';
     calcularImc();
@@ -67,14 +97,12 @@ function cerrarResultado(e){
   formulario.reset();
 }
 
-function validar(){
-  console.log('Todos los campos son obligatorios');
-}
+
 
 
 function calcularImc(){
-    peso = peso.value;
-    let estatura = (document.querySelector('#estatura').value)/100;
+    peso = document.querySelector('#peso').value;
+    estatura = (document.querySelector('#estatura').value)/100;
     let imc =  parseInt(peso/(estatura*estatura));
     resultadoImc.textContent =  `Tu Indice de masa corporal es : ${imc} kg/ M2 `;
     parrafo1.appendChild(resultadoImc);
@@ -85,8 +113,8 @@ function calcularImc(){
 
 function calcularGC(){
      estatura =  parseFloat((document.querySelector('#estatura').value)); 
-    let cintura = parseFloat((document.querySelector('#cintura').value));
-    let cuello =  parseFloat((document.querySelector('#cuello').value));
+    cintura = parseFloat((document.querySelector('#cintura').value));
+     cuello =  parseFloat((document.querySelector('#cuello').value));
     let cadera = parseFloat((document.querySelector('#cadera').value));
     
     if(men.checked){
@@ -143,13 +171,8 @@ function calcularGC(){
        }
     
     resultadoGC.textContent = `Tu procentaje de grasa corporal es : ${grasaCorporal.toFixed(1)} % `;   
-    parrafo2.appendChild(resultadoGC); 
-    console.log(resultadoGC);
-    
-   
+    parrafo2.appendChild(resultadoGC);
 }
-
-
 }
 )
 
