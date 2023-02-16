@@ -26,20 +26,40 @@ let obesoH = document.querySelector('#obeso-h');
 let resultadoImc = document.createElement('P');
 let resultadoGC = document.createElement('P');
 let tuEstado = document.createElement('P');
+let estatura = document.querySelector('#estatura');
+let peso = document.querySelector('#peso');
+let cuello = document.querySelector('#cuello');
+let cintura = document.querySelector('#cintura');
+let cadera = document.querySelector('#cadera');
+let camposFormulario = document.querySelectorAll('input');
 
 
-//abrir ventanas modales
+//event listener
 openModal.addEventListener('click', abrirModal);
 closeModal.addEventListener('click', cerrarModal);
 formulario.addEventListener('submit', calcular);
 regresar.addEventListener('click', cerrarResultado);
 
 
+camposFormulario.forEach(function(campo){
+  campo.addEventListener('blur', validarcampo);
+  
+});
+
+function validarcampo(event){
+  let campo = event.target;
+  if(campo.value.trim() === ''){
+    campo.classList.add('border-red');
+
+  }else{
+    campo.classList.remove('border-red');
+  }
+}
+
 function abrirModal(e){
     e.preventDefault();
     modal.style.visibility = 'visible';
-    principal.style.opacity = 0.5;
-    
+    principal.style.opacity = 0.5; 
 }
 
 function cerrarModal(e){
@@ -49,13 +69,14 @@ function cerrarModal(e){
     
 }
 
+
 function calcular(e){
   e.preventDefault();
-  let estatura = document.querySelector('#estatura').value;
-  let peso = document.querySelector('#peso').value;
-  let cintura = document.querySelector('#cintura').value;
-  let cuello =  document.querySelector('#cuello').value;
-  let cadera = document.querySelector('#cadera').value;
+   estatura = document.querySelector('#estatura').value;
+   peso = document.querySelector('#peso').value;
+   cintura = document.querySelector('#cintura').value;
+   cuello =  document.querySelector('#cuello').value;
+   cadera = document.querySelector('#cadera').value;
 
   //Validación
   if(peso === '' || estatura === '' || cintura === ''  || cuello === ''  || (cadera === '' && women.checked)){
@@ -171,5 +192,6 @@ function calcularGC(){
     parrafo2.appendChild(resultadoGC);
 }
 }
+
 )
 

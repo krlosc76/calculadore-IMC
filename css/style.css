@@ -92,6 +92,12 @@ p{
     outline: none;
     font-size: 18px;
 }
+.border-red{
+    border: 1px solid red !important;
+}
+.border-green{
+    border: 1px solid green !important;
+}
 .input-box span{
     position: absolute;
     left: 0;
