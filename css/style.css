@@ -204,7 +204,7 @@ input[type=radio]:checked + label>img  {
 }
 
 /*MODAL*/
-#modal{
+.modal{
     width: 750px;
     height: 500px;
     position: fixed;
@@ -338,6 +338,40 @@ input[type=radio]:checked + label>img  {
     background: var(--green-500);
     padding: 0px;
 }
+/*Historial*/
+#historial h1{
+    text-align: center;
+}
+.ver-historial{
+    text-align: right;
+    font-weight: 600;
+}
+.ver-historial a{
+    color:blue;
+}
+.ver-historial::after{
+    content: " \e473";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: blue;
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.encabezado{
+    font-weight: 700;
+    font-size: 20px;
+    background: var(--gray-300);
+    text-align: center;
+    text-transform: uppercase;
+}
+.datos{
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 3px solid var(--gray-300);
+}
+
 
 /*RESPONSIVE*/
 @media (max-width: 640px) {

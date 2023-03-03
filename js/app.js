@@ -5,6 +5,8 @@ const modal = document.querySelector('#modal');
 const openModal = document.querySelector('#open-modal');
 const closeModal = document.querySelector('#close');
 const resultado = document.querySelector('.resultado');
+const openHistorial = document.querySelector('#open-historial');
+const historial = document.querySelector('#historial');
 //const calcular = document.querySelector('#calcular');
 const regresar = document.querySelector('#regresar');
 const parrafo1 = document.querySelector('.parrafo1');
@@ -15,6 +17,7 @@ const women = document.querySelector('#women');
 const tablaMujeres = document.querySelector('.tabla-mujeres');
 const tablaHombres = document.querySelector('.tabla-hombres');
 const formulario = document.querySelector('#formulario');
+const closeHistorial = document.querySelector('#close-historial');
 let atleta = document.querySelector('#atleta');
 let normal = document.querySelector('#normal');
 let corpulento = document.querySelector('#corpulento');
@@ -32,6 +35,11 @@ let cuello = document.querySelector('#cuello');
 let cintura = document.querySelector('#cintura');
 let cadera = document.querySelector('#cadera');
 let camposFormulario = document.querySelectorAll('input');
+let imc;
+let grasaCorporal;
+let objetoDatos  = [];
+
+
 
 
 //event listener
@@ -39,10 +47,19 @@ openModal.addEventListener('click', abrirModal);
 closeModal.addEventListener('click', cerrarModal);
 formulario.addEventListener('submit', calcular);
 regresar.addEventListener('click', cerrarResultado);
+openHistorial.addEventListener('click', abrirHistorial);
+closeHistorial.addEventListener('click', cerrarHistorial);
 
 
 camposFormulario.forEach(function(campo){
   campo.addEventListener('blur', validarcampo);
+  
+});
+
+ // Contenido cargado
+ document.addEventListener('DOMContentLoaded', () => {
+  objetoDatos = JSON.parse( localStorage.getItem('datosHistorial') );
+  console.log(objetoDatos);
   
 });
 
@@ -61,7 +78,17 @@ function abrirModal(e){
     modal.style.visibility = 'visible';
     principal.style.opacity = 0.5; 
 }
-
+function abrirHistorial(e){
+  e.preventDefault();
+  historial.style.visibility = 'visible';
+  resultado.style.display = 'none';
+  principal.style.display = 'none';
+}
+function cerrarHistorial(e){
+  e.preventDefault();
+  historial.style.display = 'none';
+  resultado.style.display = 'block';
+}
 function cerrarModal(e){
     e.preventDefault();
     modal.style.visibility = 'hidden';
@@ -106,6 +133,15 @@ function abrirResultado(){
     principal.style.display = 'none';
     calcularImc();
     calcularGC();
+    objetoDatos = {
+      fecha: Date.now(),
+      imc: imc,
+      grasaCorporal: grasaCorporal
+    };
+    
+   const datosHistorial = localStorage.setItem('datosHistorial', JSON.stringify(objetoDatos));
+   console.log(datosHistorial);
+   
     
 }
 function cerrarResultado(e){
@@ -121,7 +157,7 @@ function cerrarResultado(e){
 function calcularImc(){
     peso = document.querySelector('#peso').value;
     estatura = (document.querySelector('#estatura').value)/100;
-    let imc =  parseInt(peso/(estatura*estatura));
+    imc =  parseInt(peso/(estatura*estatura));
     resultadoImc.textContent =  `Tu Indice de masa corporal es : ${imc} kg/ M2 `;
     parrafo1.appendChild(resultadoImc);
    return 
@@ -190,6 +226,7 @@ function calcularGC(){
     
     resultadoGC.textContent = `Tu procentaje de grasa corporal es : ${grasaCorporal.toFixed(1)} % `;   
     parrafo2.appendChild(resultadoGC);
+   
 }
 }
 
